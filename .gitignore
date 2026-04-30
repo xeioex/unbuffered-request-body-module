@@ -1,0 +1,7 @@
+objs/
+*.o
+*.so
+__pycache__/
+*~
+.*.swp
+.*.swo

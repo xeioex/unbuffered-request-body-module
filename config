@@ -1,12 +1,19 @@
 ngx_addon_name=ngx_http_unbuffered_body_module
 
+ngx_http_ub_module_srcs="\
+    $ngx_addon_dir/src/ngx_http_unbuffered_body_module.c \
+    $ngx_addon_dir/src/ngx_http_async_body_module.c"
+
+ngx_http_ub_module_names="\
+    ngx_http_unbuffered_body_module \
+    ngx_http_async_body_module"
+
 if test -n "$ngx_module_link"; then
     ngx_module_type=HTTP
-    ngx_module_name=ngx_http_unbuffered_body_module
-    ngx_module_srcs="$ngx_addon_dir/src/ngx_http_unbuffered_body_module.c"
+    ngx_module_name="$ngx_http_ub_module_names"
+    ngx_module_srcs="$ngx_http_ub_module_srcs"
     . auto/module
 else
-    HTTP_MODULES="$HTTP_MODULES ngx_http_unbuffered_body_module"
-    NGX_ADDON_SRCS="$NGX_ADDON_SRCS \
-        $ngx_addon_dir/src/ngx_http_unbuffered_body_module.c"
+    HTTP_MODULES="$HTTP_MODULES $ngx_http_ub_module_names"
+    NGX_ADDON_SRCS="$NGX_ADDON_SRCS $ngx_http_ub_module_srcs"
 fi
